@@ -19,4 +19,4 @@ export const PALETTE = {
   },
   shadow: 'drop-shadow(0 0 15px rgba(56, 119, 238, 0.10))',
   gradient: 'linear-gradient(180deg, #3877EE 0%, #EF5DA8 100%)',
-};
+} as const;
