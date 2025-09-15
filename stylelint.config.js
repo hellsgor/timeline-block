@@ -1,0 +1,31 @@
+/** @type {import("stylelint").Config} */
+export default {
+  extends: ['stylelint-config-standard', 'stylelint-config-clean-order'],
+  overrides: [
+    {
+      files: ['**/*.{js,jsx,ts,tsx}'],
+      customSyntax: 'postcss-styled-syntax',
+    },
+  ],
+  rules: {
+    'rule-empty-line-before': [
+      'always',
+      {
+        except: ['first-nested'],
+        ignore: ['after-comment', 'inside-block'],
+      },
+    ],
+    'no-descending-specificity': null,
+    'order/order': ['declarations', 'at-rules'],
+    'block-no-empty': true,
+    'no-duplicate-selectors': true,
+    'color-named': 'never',
+    'at-rule-empty-line-before': [
+      'always',
+      {
+        except: ['first-nested', 'blockless-after-same-name-blockless'],
+        ignore: ['after-comment', 'inside-block'],
+      },
+    ],
+  },
+};
