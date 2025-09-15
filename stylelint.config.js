@@ -1,6 +1,7 @@
 /** @type {import("stylelint").Config} */
 export default {
   extends: ['stylelint-config-standard', 'stylelint-config-clean-order'],
+  plugins: ['stylelint-order'],
   overrides: [
     {
       files: ['**/*.{js,jsx,ts,tsx}'],
