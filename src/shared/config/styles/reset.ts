@@ -8,8 +8,7 @@ export const reset = css`
   }
 
   html,
-  body,
-  #root {
+  body {
     height: 100%;
   }
 
