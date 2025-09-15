@@ -20,9 +20,9 @@ export const StyledH1 = styled.h1`
 
 export const StyledH2 = styled.h2`
   ${styledHeading}
-  font-size: clamp(${getRems(20)}, 0.311rem + 3.543vi, ${getRems(56)});
   position: relative;
   padding-left: 76px;
+  font-size: clamp(${getRems(20)}, 0.311rem + 3.543vi, ${getRems(56)});
 
   &::before {
     ${bar};
