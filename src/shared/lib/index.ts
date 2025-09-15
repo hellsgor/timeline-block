@@ -1,0 +1,1 @@
+export { getRems } from './styles';

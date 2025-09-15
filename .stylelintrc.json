@@ -1,0 +1,35 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
+  "plugins": ["stylelint-order"],
+  "overrides": [
+    {
+      "files": ["**/*.{js,jsx,ts,tsx}"],
+      "customSyntax": "postcss-styled-syntax",
+      "rules": {
+        "media-query-no-invalid": null
+      }
+    }
+  ],
+  "rules": {
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "inside-block"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "order/order": ["declarations", "at-rules"],
+    "block-no-empty": true,
+    "no-duplicate-selectors": true,
+    "color-named": "never",
+    "media-query-no-invalid": true,
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested", "blockless-after-same-name-blockless"],
+        "ignore": ["after-comment", "inside-block"]
+      }
+    ]
+  }
+}
