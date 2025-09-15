@@ -20,7 +20,7 @@ export const StyledH1 = styled.h1`
 
 export const StyledH2 = styled.h2`
   ${styledHeading}
-  font-size: ${getRems(56)};
+  font-size: clamp(${getRems(20)}, 0.311rem + 3.543vi, ${getRems(56)});
   position: relative;
   padding-left: 76px;
 
@@ -30,5 +30,14 @@ export const StyledH2 = styled.h2`
     top: 7px;
     bottom: 7px;
     left: 0;
+  }
+
+  @media ${({ theme }) => theme.media.vertTablet} {
+    position: static;
+    padding-left: 0;
+
+    &::before {
+      content: unset;
+    }
   }
 `;
