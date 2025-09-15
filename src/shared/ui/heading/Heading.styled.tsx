@@ -2,16 +2,16 @@ import { getRems } from '@/shared/lib';
 import styled, { css } from 'styled-components';
 
 const styledHeading = css`
-  color: ${({ theme }) => theme.colors.content.base};
   font-weight: 700;
   line-height: 1.2;
+  color: ${({ theme }) => theme.colors.content.base};
 `;
 
 const bar = css`
   content: '';
+  display: block;
   width: 5px;
   background: ${({ theme }) => theme.colors.gradient};
-  display: block;
 `;
 
 export const StyledH1 = styled.h1`
@@ -20,9 +20,9 @@ export const StyledH1 = styled.h1`
 
 export const StyledH2 = styled.h2`
   ${styledHeading}
-  font-size: clamp(${getRems(20)}, 0.311rem + 3.543vi, ${getRems(56)});
   position: relative;
   padding-left: 76px;
+  font-size: clamp(${getRems(20)}, 0.311rem + 3.543vi, ${getRems(56)});
 
   &::before {
     ${bar};
