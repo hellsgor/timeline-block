@@ -10,6 +10,7 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
+      'prettier',
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
