@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
   padding: 0 32px;
 
   @media ${({ theme }) => theme.media.phone} {
-    padding-left: 20px;
     padding-right: 20px;
+    padding-left: 20px;
   }
 `;
