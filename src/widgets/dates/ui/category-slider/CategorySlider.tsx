@@ -1,9 +1,11 @@
-import { useRef } from 'react';
+import 'swiper/swiper-bundle.css';
 import type { Swiper as SwiperType } from 'swiper';
+import { SwiperSlide } from 'swiper/react';
+
+import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
 import { EventCard, Icon } from '@/shared/ui';
-import { SwiperSlide } from 'swiper/react';
-import type { ITimelineCategory } from '../../model';
+import { useRef } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
