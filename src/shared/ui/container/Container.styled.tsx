@@ -4,10 +4,9 @@ export const StyledContainer = styled.div`
   width: 100%;
   max-width: 1504px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 ${({ theme }) => theme.safeIndents.desktop};
 
-  @media ${({ theme }) => theme.media.phone} {
-    padding-right: 20px;
-    padding-left: 20px;
+  @media ${({ theme }) => theme.media.horTablet} {
+    padding: 0 ${({ theme }) => theme.safeIndents.tablet};
   }
 `;
