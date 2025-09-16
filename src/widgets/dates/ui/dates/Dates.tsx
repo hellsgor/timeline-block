@@ -33,7 +33,10 @@ export function Dates({ sectionName = 'dates' }: DatesProps) {
             onPrev={() => decrementActiveCategorySlide()}
             onNext={() => incrementActiveCategorySlide()}
           />
-          <CategorySlider data={currentCategory[1]} />
+          <CategorySlider
+            data={currentCategory[1]}
+            dataId={currentCategory[0]}
+          />
         </S.StyledWrapper>
       </Container>
     </section>

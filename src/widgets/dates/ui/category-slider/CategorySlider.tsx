@@ -5,14 +5,19 @@ import { SwiperSlide } from 'swiper/react';
 import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
 import { EventCard, Icon } from '@/shared/ui';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
+  dataId: string;
 };
 
-export function CategorySlider({ data }: CategorySlideProps) {
+export function CategorySlider({ data, dataId }: CategorySlideProps) {
   const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    swiperRef.current?.slideTo(0, 0);
+  }, [dataId]);
 
   return (
     <S.StyledSwiperContainer>
