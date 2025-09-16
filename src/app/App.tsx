@@ -1,3 +1,5 @@
+import { Dates } from '@/widgets/dates';
+
 export function App() {
-  return <div>cleared App</div>;
+  return <Dates />;
 }
