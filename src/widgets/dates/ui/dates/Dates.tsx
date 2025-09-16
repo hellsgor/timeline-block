@@ -1,4 +1,4 @@
-import { BackgroundLines, Container } from '@/shared/ui';
+import { BackgroundLines, Container, Heading } from '@/shared/ui';
 import * as S from './Dates.styled';
 
 type DatesProps = {
@@ -11,7 +11,11 @@ export function Dates({ sectionName = 'dates' }: DatesProps) {
       <Container>
         <S.StyledWrapper>
           <BackgroundLines />
-          <p>some text</p>
+          <Heading type={2}>
+            Исторические
+            <br />
+            даты
+          </Heading>
         </S.StyledWrapper>
       </Container>
     </section>
