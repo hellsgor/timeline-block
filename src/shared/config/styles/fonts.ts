@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export const fonts = css`
   @font-face {
-    font-family: 'PT Sans';
+    font-family: PT-Sans;
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@ export const fonts = css`
   }
 
   @font-face {
-    font-family: 'PT Sans';
+    font-family: PT-Sans;
     font-weight: 700;
     font-style: normal;
     font-display: swap;
