@@ -25,7 +25,16 @@ type TDefaultRoundedButton = {
   isTransparent?: false;
 };
 
-export type IButtonRounded =
+export type ButtonRoundedProps =
   | (TBaseRoundedButton & TTransparentRoundedButton)
   | (TBaseRoundedButton & TBorderedRoundedButton)
   | (TBaseRoundedButton & TDefaultRoundedButton);
+
+export type StyledButtonRoundedProps = Omit<
+  ButtonRoundedProps,
+  'isBordered' | 'isShadowed' | 'isTransparent'
+> & {
+  $isBordered: ButtonRoundedProps['isBordered'];
+  $isShadowed: ButtonRoundedProps['isShadowed'];
+  $isTransparent: ButtonRoundedProps['isTransparent'];
+};

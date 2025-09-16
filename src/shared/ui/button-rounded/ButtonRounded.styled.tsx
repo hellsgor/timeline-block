@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import type { IButtonRounded } from './types';
+import type { StyledButtonRoundedProps } from './types';
 import { getRems } from '@/shared/lib';
 
-export const StyledButtonRounded = styled.button<IButtonRounded>`
+export const StyledButtonRounded = styled.button<StyledButtonRoundedProps>`
   --tr-func: ${({ theme }) => theme.transitions.func};
   --tr-duration: ${({ theme }) => theme.transitions.duration};
 
@@ -26,7 +26,7 @@ export const StyledButtonRounded = styled.button<IButtonRounded>`
     }
   }};
   border: ${(props) =>
-    props.isBordered
+    props.$isBordered
       ? `1px solid ${props.theme.colors.elements.static}`
       : 'none'};
   border-radius: 50%;
@@ -34,9 +34,9 @@ export const StyledButtonRounded = styled.button<IButtonRounded>`
   color: ${(props) => props.color || props.theme.colors.content.base};
 
   background-color: ${(props) =>
-    props.isTransparent ? 'transparent' : props.theme.colors.bg};
+    props.$isTransparent ? 'transparent' : props.theme.colors.bg};
 
-  ${(props) => props.isShadowed && `filter: ${props.theme.colors.shadow};`}
+  ${(props) => props.$isShadowed && `filter: ${props.theme.colors.shadow};`}
 
   transition: color var(--tr-duration) var(--tr-func), border-color var(--tr-duration) var(--tr-func), opacity var(--tr-duration) var(--tr-func);
 
