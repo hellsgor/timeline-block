@@ -4,6 +4,7 @@ type TBaseRoundedButton = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: 'big' | 'medium' | 'small';
   isShadowed?: boolean;
   color?: string;
+  hint?: string;
 };
 
 // Прозрачная кнопка всегда с бордером
