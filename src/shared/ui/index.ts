@@ -4,3 +4,4 @@ export { ButtonRounded } from './button-rounded';
 export { Icon } from './icon';
 export { BackgroundLines } from './background-lines';
 export { EventCard } from './event-card';
+export { Navigation } from './navigation';
