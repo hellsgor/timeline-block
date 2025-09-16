@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 import * as S from './Container.styled';
 
-export function Container({ children }: { children: ReactNode }) {
-  return <S.StyledContainer>{children}</S.StyledContainer>;
+export function Container({ children, ...rest }: HTMLAttributes<HTMLElement>) {
+  return <S.StyledContainer {...rest}>{children}</S.StyledContainer>;
 }
