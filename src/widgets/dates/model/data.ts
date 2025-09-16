@@ -1,4 +1,4 @@
-type TBaseId = string | (() => string);
+type TBaseId = string;
 
 export interface ITimelineCategory {
   id: TBaseId;
