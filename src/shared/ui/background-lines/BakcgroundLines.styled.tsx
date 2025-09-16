@@ -24,15 +24,9 @@ export const StyledBackgroundLines = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding: 0 ${({ theme }) => theme.safeIndents.desktop};
-
   &::before,
   &::after {
     content: '';
     ${baseLine}
-  }
-
-  @media ${({ theme }) => theme.media.horTablet} {
-    padding: 0 ${({ theme }) => theme.safeIndents.tablet};
   }
 `;
