@@ -14,3 +14,7 @@ export const StyledTitle = styled.p`
   color: ${({ theme }) => theme.colors.content.accent.primary};
   text-transform: uppercase;
 `;
+
+export const StyledText = styled.p`
+  color: ${({ theme }) => theme.colors.content.base};
+`;

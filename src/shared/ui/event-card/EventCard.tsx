@@ -9,7 +9,7 @@ export function EventCard({ title, text }: EventCardProps) {
   return (
     <S.StyledEventCard>
       <S.StyledTitle>{title}</S.StyledTitle>
-      <p>{text}</p>
+      <S.StyledText>{text}</S.StyledText>
     </S.StyledEventCard>
   );
 }
