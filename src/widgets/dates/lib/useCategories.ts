@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { TIMELINE_DATA } from '../config';
 import type { ITimelineData } from '../model';
 
@@ -7,7 +7,7 @@ export function useCategories() {
 
   const [activeCategoryIdx, setActiveCategoryIdx] = useState(0);
 
-  const categories = Object.entries(data);
+  const categories = useMemo(() => Object.entries(data), [data]);
   const activeCategory = categories[activeCategoryIdx];
 
   const incrementCategory = () => {
