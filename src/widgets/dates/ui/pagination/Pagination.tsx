@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { ITimelineCategory } from '../../model';
 import { PaginationButton } from '../pagination-button';
 
@@ -6,7 +7,10 @@ interface PaginationProps {
   currentIdx: number;
 }
 
-export function Pagination({ categories, currentIdx }: PaginationProps) {
+export const Pagination = memo(function Pagination({
+  categories,
+  currentIdx,
+}: PaginationProps) {
   const buttons = categories.map((category, idx) => (
     <PaginationButton
       key={idx}
@@ -16,4 +20,4 @@ export function Pagination({ categories, currentIdx }: PaginationProps) {
     />
   ));
   return <div>{buttons}</div>;
-}
+});

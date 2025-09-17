@@ -60,14 +60,22 @@ export function Dates() {
     [isAnimating],
   );
 
+  const handlePrev = useCallback(() => {
+    runCategoryChangeAnimation(decrementActiveCategorySlide);
+  }, [runCategoryChangeAnimation, decrementActiveCategorySlide]);
+
+  const handleNext = useCallback(() => {
+    runCategoryChangeAnimation(incrementActiveCategorySlide);
+  }, [runCategoryChangeAnimation, incrementActiveCategorySlide]);
+
   return (
     <>
       <Pagination categories={categories} currentIdx={currentIdx} />
       <Navigation
         active={currentIdx}
         total={categories.length}
-        onPrev={() => runCategoryChangeAnimation(decrementActiveCategorySlide)}
-        onNext={() => runCategoryChangeAnimation(incrementActiveCategorySlide)}
+        onPrev={handlePrev}
+        onNext={handleNext}
       />
       <CategorySlider
         ref={categorySliderRef}

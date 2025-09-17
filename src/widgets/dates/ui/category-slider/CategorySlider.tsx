@@ -1,20 +1,27 @@
 import 'swiper/swiper-bundle.css';
 import type { Swiper as SwiperType } from 'swiper';
 import { SwiperSlide } from 'swiper/react';
+import {
+  memo,
+  useEffect,
+  forwardRef,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 
 import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
 import { EventCard } from '@/shared/ui';
 import { SliderNavNext } from '../slider-nav-next';
-import { useEffect, forwardRef, useRef, useCallback, useMemo } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
   dataId: string;
 };
 
-export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
-  ({ data, dataId }, ref) => {
+export const CategorySlider = memo(
+  forwardRef<SwiperType, CategorySlideProps>(({ data, dataId }, ref) => {
     const swiperRef = useRef<SwiperType | null>(null);
 
     const handleSwiper = useCallback(
@@ -65,7 +72,7 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
         <SliderNavNext onNext={handleNext} />
       </S.StyledSwiperContainer>
     );
-  },
+  }),
 );
 
 CategorySlider.displayName = 'CategorySlider';

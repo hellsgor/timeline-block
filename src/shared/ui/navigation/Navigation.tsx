@@ -14,17 +14,13 @@ export function Navigation({ active, total, onPrev, onNext }: NavigationProps) {
     <S.StyledNavigation>
       <S.StyledCounter>{`${toTwoDigits(active + 1)}/${toTwoDigits(total)}`}</S.StyledCounter>
       <S.StyledWrapper>
-        <S.StyledPrevButton
-          isBordered
-          disabled={active === 0}
-          onClick={() => onPrev()}
-        >
+        <S.StyledPrevButton isBordered disabled={active === 0} onClick={onPrev}>
           <Icon name="Chevron" />
         </S.StyledPrevButton>
         <ButtonRounded
           isBordered
           disabled={active === total - 1}
-          onClick={() => onNext()}
+          onClick={onNext}
         >
           <Icon name="Chevron" />
         </ButtonRounded>
