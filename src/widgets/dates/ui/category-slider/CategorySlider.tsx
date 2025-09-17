@@ -4,8 +4,9 @@ import { SwiperSlide } from 'swiper/react';
 
 import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
-import { EventCard, Icon } from '@/shared/ui';
-import { useEffect, useRef, forwardRef } from 'react';
+import { EventCard } from '@/shared/ui';
+import { SliderNavNext } from '../slider-nav-next';
+import { useEffect, forwardRef, useRef, useCallback } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
@@ -16,6 +17,24 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
   ({ data, dataId }, ref) => {
     const swiperRef = useRef<SwiperType | null>(null);
 
+    const handleSwiper = useCallback(
+      (swiper: SwiperType) => {
+        swiperRef.current = swiper;
+        if (ref) {
+          if (typeof ref === 'function') {
+            ref(swiper);
+          } else if (ref && 'current' in ref) {
+            ref.current = swiper;
+          }
+        }
+      },
+      [ref],
+    );
+
+    const handleNext = useCallback(() => {
+      swiperRef.current?.slideNext();
+    }, []);
+
     useEffect(() => {
       swiperRef.current?.slideTo(0, 0);
     }, [dataId]);
@@ -23,16 +42,7 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
     return (
       <S.StyledSwiperContainer>
         <S.StyledSwiper
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-            if (ref) {
-              if (typeof ref === 'function') {
-                ref(swiper);
-              } else {
-                ref.current = swiper;
-              }
-            }
-          }}
+          onSwiper={handleSwiper}
           slidesPerView={3}
           spaceBetween={80}
           rewind
@@ -48,14 +58,7 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
             </SwiperSlide>
           ))}
         </S.StyledSwiper>
-        <S.StyledButtonRounded
-          isShadowed
-          onClick={() => {
-            swiperRef.current?.slideNext();
-          }}
-        >
-          <Icon name={'Chevron'} />
-        </S.StyledButtonRounded>
+        <SliderNavNext onNext={handleNext} />
       </S.StyledSwiperContainer>
     );
   },

@@ -6,7 +6,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import { BackgroundLines, Container, Heading, Navigation } from '@/shared/ui';
 import { CategorySlider } from '../category-slider';
 import { useCategories } from '../../lib';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, useCallback } from 'react';
 
 type DatesProps = {
   sectionName?: string;
@@ -40,27 +40,30 @@ export function Dates({ sectionName = 'dates' }: DatesProps) {
     };
   }, [currentIdx]);
 
-  const runCategoryChangeAnimation = (changeFn: () => void) => {
-    if (isAnimating || !categorySliderRef.current) return;
+  const runCategoryChangeAnimation = useCallback(
+    (changeFn: () => void) => {
+      if (isAnimating || !categorySliderRef.current) return;
 
-    setIsAnimating(true);
-    tlRef.current?.kill();
-    tlRef.current = gsap.timeline();
+      setIsAnimating(true);
+      tlRef.current?.kill();
+      tlRef.current = gsap.timeline();
 
-    tlRef.current
-      .to(categorySliderRef.current.el, {
-        autoAlpha: 0,
-        y: 100,
-        duration: 0.5,
-        ease: 'power2.inOut',
-      })
-      .add(() => {
-        changeFn();
-      })
-      .add(() => {
-        setIsAnimating(false);
-      });
-  };
+      tlRef.current
+        .to(categorySliderRef.current.el, {
+          autoAlpha: 0,
+          y: 100,
+          duration: 0.5,
+          ease: 'power2.inOut',
+        })
+        .add(() => {
+          changeFn();
+        })
+        .add(() => {
+          setIsAnimating(false);
+        });
+    },
+    [isAnimating],
+  );
 
   return (
     <section data-section-name={sectionName}>
