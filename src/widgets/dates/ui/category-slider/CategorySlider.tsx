@@ -6,7 +6,7 @@ import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
 import { EventCard } from '@/shared/ui';
 import { SliderNavNext } from '../slider-nav-next';
-import { useEffect, forwardRef, useRef, useCallback } from 'react';
+import { useEffect, forwardRef, useRef, useCallback, useMemo } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
@@ -35,6 +35,18 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
       swiperRef.current?.slideNext();
     }, []);
 
+    const slides = useMemo(() => {
+      return data.items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <EventCard
+            title={`${item.year}`}
+            text={item.text}
+            data-id={item.id}
+          />
+        </SwiperSlide>
+      ));
+    }, [data.items]);
+
     useEffect(() => {
       swiperRef.current?.slideTo(0, 0);
     }, [dataId]);
@@ -48,15 +60,7 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
           rewind
           grabCursor
         >
-          {data.items.map((item) => (
-            <SwiperSlide key={item.id}>
-              <EventCard
-                title={`${item.year}`}
-                text={item.text}
-                data-id={item.id}
-              />
-            </SwiperSlide>
-          ))}
+          {slides}
         </S.StyledSwiper>
         <SliderNavNext onNext={handleNext} />
       </S.StyledSwiperContainer>
