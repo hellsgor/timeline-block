@@ -1,5 +1,5 @@
-import { Dates } from '@/widgets/dates';
+import { DatesView } from '@/widgets/dates/ui';
 
 export function App() {
-  return <Dates />;
+  return <DatesView />;
 }
