@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import * as S from './EventCard.styled';
 
 type EventCardProps = {
@@ -5,11 +6,14 @@ type EventCardProps = {
   text: string;
 };
 
-export function EventCard({ title, text }: EventCardProps) {
+export const EventCard = memo(function EventCard({
+  title,
+  text,
+}: EventCardProps) {
   return (
     <S.StyledEventCard>
       <S.StyledTitle>{title}</S.StyledTitle>
       <S.StyledText>{text}</S.StyledText>
     </S.StyledEventCard>
   );
-}
+});
