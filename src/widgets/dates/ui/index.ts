@@ -1,1 +1,1 @@
-export { Dates } from './dates';
+export { DatesView } from './dates-view';

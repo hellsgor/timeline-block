@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState, useRef } from 'react';
 import { TIMELINE_DATA } from '../config';
 import type { ITimelineData } from '../model';
 
@@ -7,18 +7,24 @@ export function useCategories() {
 
   const [activeCategoryIdx, setActiveCategoryIdx] = useState(0);
 
-  const categories = Object.entries(data);
+  const categoriesLengthRef = useRef(0);
+  const categories = useMemo(() => {
+    const entries = Object.entries(data);
+    categoriesLengthRef.current = entries.length;
+    return entries;
+  }, [data]);
+
   const activeCategory = categories[activeCategoryIdx];
 
-  const incrementCategory = () => {
+  const incrementCategory = useCallback(() => {
     setActiveCategoryIdx((state) =>
-      state + 1 > categories.length ? state : state + 1,
+      state + 1 >= categoriesLengthRef.current ? state : state + 1,
     );
-  };
+  }, []);
 
-  const decrementCategory = () => {
+  const decrementCategory = useCallback(() => {
     setActiveCategoryIdx((state) => (state - 1 < 0 ? state : state - 1));
-  };
+  }, []);
 
   return {
     currentIdx: activeCategoryIdx,

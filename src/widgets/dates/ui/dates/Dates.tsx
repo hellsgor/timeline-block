@@ -1,18 +1,13 @@
-import * as S from './Dates.styled';
-
 import gsap from 'gsap';
 import type { Swiper as SwiperType } from 'swiper';
 
-import { BackgroundLines, Container, Heading, Navigation } from '@/shared/ui';
+import { Navigation } from '@/shared/ui';
 import { CategorySlider } from '../category-slider';
 import { useCategories } from '../../lib';
 import { useLayoutEffect, useRef, useState, useCallback } from 'react';
+import { Pagination } from '../pagination';
 
-type DatesProps = {
-  sectionName?: string;
-};
-
-export function Dates({ sectionName = 'dates' }: DatesProps) {
+export function Dates() {
   const {
     categories,
     currentCategory,
@@ -65,33 +60,28 @@ export function Dates({ sectionName = 'dates' }: DatesProps) {
     [isAnimating],
   );
 
+  const handlePrev = useCallback(() => {
+    runCategoryChangeAnimation(decrementActiveCategorySlide);
+  }, [runCategoryChangeAnimation, decrementActiveCategorySlide]);
+
+  const handleNext = useCallback(() => {
+    runCategoryChangeAnimation(incrementActiveCategorySlide);
+  }, [runCategoryChangeAnimation, incrementActiveCategorySlide]);
+
   return (
-    <section data-section-name={sectionName}>
-      <Container>
-        <S.StyledWrapper>
-          <BackgroundLines />
-          <Heading type={2}>
-            Исторические
-            <br />
-            даты
-          </Heading>
-          <Navigation
-            active={currentIdx}
-            total={categories.length}
-            onPrev={() =>
-              runCategoryChangeAnimation(decrementActiveCategorySlide)
-            }
-            onNext={() =>
-              runCategoryChangeAnimation(incrementActiveCategorySlide)
-            }
-          />
-          <CategorySlider
-            ref={categorySliderRef}
-            data={currentCategory[1]}
-            dataId={currentCategory[0]}
-          />
-        </S.StyledWrapper>
-      </Container>
-    </section>
+    <>
+      <Pagination categories={categories} currentIdx={currentIdx} />
+      <Navigation
+        active={currentIdx}
+        total={categories.length}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
+      <CategorySlider
+        ref={categorySliderRef}
+        data={currentCategory[1]}
+        dataId={currentCategory[0]}
+      />
+    </>
   );
 }

@@ -1,20 +1,27 @@
 import 'swiper/swiper-bundle.css';
 import type { Swiper as SwiperType } from 'swiper';
 import { SwiperSlide } from 'swiper/react';
+import {
+  memo,
+  useEffect,
+  forwardRef,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 
 import type { ITimelineCategory } from '../../model';
 import * as S from './CategorySlider.styled';
 import { EventCard } from '@/shared/ui';
 import { SliderNavNext } from '../slider-nav-next';
-import { useEffect, forwardRef, useRef, useCallback } from 'react';
 
 type CategorySlideProps = {
   data: ITimelineCategory;
   dataId: string;
 };
 
-export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
-  ({ data, dataId }, ref) => {
+export const CategorySlider = memo(
+  forwardRef<SwiperType, CategorySlideProps>(({ data, dataId }, ref) => {
     const swiperRef = useRef<SwiperType | null>(null);
 
     const handleSwiper = useCallback(
@@ -35,6 +42,18 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
       swiperRef.current?.slideNext();
     }, []);
 
+    const slides = useMemo(() => {
+      return data.items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <EventCard
+            title={`${item.year}`}
+            text={item.text}
+            data-id={item.id}
+          />
+        </SwiperSlide>
+      ));
+    }, [data.items]);
+
     useEffect(() => {
       swiperRef.current?.slideTo(0, 0);
     }, [dataId]);
@@ -48,20 +67,12 @@ export const CategorySlider = forwardRef<SwiperType, CategorySlideProps>(
           rewind
           grabCursor
         >
-          {data.items.map((item) => (
-            <SwiperSlide key={item.id}>
-              <EventCard
-                title={`${item.year}`}
-                text={item.text}
-                data-id={item.id}
-              />
-            </SwiperSlide>
-          ))}
+          {slides}
         </S.StyledSwiper>
         <SliderNavNext onNext={handleNext} />
       </S.StyledSwiperContainer>
     );
-  },
+  }),
 );
 
 CategorySlider.displayName = 'CategorySlider';

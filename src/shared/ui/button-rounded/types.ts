@@ -37,4 +37,5 @@ export type StyledButtonRoundedProps = Omit<
   $isBordered: ButtonRoundedProps['isBordered'];
   $isShadowed: ButtonRoundedProps['isShadowed'];
   $isTransparent: ButtonRoundedProps['isTransparent'];
+  $hint: ButtonRoundedProps['hint'];
 };
