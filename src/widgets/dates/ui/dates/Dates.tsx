@@ -7,6 +7,7 @@ import { BackgroundLines, Container, Heading, Navigation } from '@/shared/ui';
 import { CategorySlider } from '../category-slider';
 import { useCategories } from '../../lib';
 import { useLayoutEffect, useRef, useState, useCallback } from 'react';
+import { Pagination } from '../pagination';
 
 type DatesProps = {
   sectionName?: string;
@@ -75,6 +76,7 @@ export function Dates({ sectionName = 'dates' }: DatesProps) {
             <br />
             даты
           </Heading>
+          {<Pagination categories={categories} currentIdx={currentIdx} />}
           <Navigation
             active={currentIdx}
             total={categories.length}
