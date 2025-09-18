@@ -1,18 +1,4 @@
-import styled, { css } from 'styled-components';
-
-const baseLine = css`
-  display: block;
-
-  width: 1px;
-  height: 100%;
-
-  opacity: 0.1;
-  background-color: ${({ theme }) => theme.colors.content.base};
-`;
-
-export const StyledLine = styled.span`
-  ${baseLine}
-`;
+import styled from 'styled-components';
 
 export const StyledBackgroundLines = styled.div`
   pointer-events: none;
@@ -23,10 +9,4 @@ export const StyledBackgroundLines = styled.div`
 
   display: flex;
   justify-content: space-between;
-
-  &::before,
-  &::after {
-    content: '';
-    ${baseLine}
-  }
 `;
