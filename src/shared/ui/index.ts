@@ -6,3 +6,4 @@ export { BackgroundLines } from './background-lines';
 export { EventCard } from './event-card';
 export { Navigation } from './navigation';
 export { Section } from './section';
+export { Line } from './line';
