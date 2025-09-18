@@ -1,10 +1,10 @@
-import { BackgroundLines, Container, Heading } from '@/shared/ui';
+import { BackgroundLines, Container, Heading, Section } from '@/shared/ui';
 import * as S from './DatesView.styled';
 import { Dates } from '../dates/Dates';
 
 export function DatesView() {
   return (
-    <section>
+    <Section>
       <Container>
         <S.StyledWrapper>
           <BackgroundLines />
@@ -16,6 +16,6 @@ export function DatesView() {
           <Dates />
         </S.StyledWrapper>
       </Container>
-    </section>
+    </Section>
   );
 }
