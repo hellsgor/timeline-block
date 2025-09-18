@@ -9,4 +9,5 @@ export const StyledWrapper = styled.div`
 
   width: 100%;
   min-height: 100vh;
+  padding: 170px 0 104px;
 `;
