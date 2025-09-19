@@ -6,7 +6,6 @@ export function ButtonRounded({
   isBordered,
   isShadowed,
   isTransparent,
-  hint,
   ...rest
 }: ButtonRoundedProps) {
   return (
@@ -14,7 +13,6 @@ export function ButtonRounded({
       $isBordered={isBordered}
       $isShadowed={isShadowed}
       $isTransparent={isTransparent}
-      $hint={hint}
       {...rest}
     >
       {children}
