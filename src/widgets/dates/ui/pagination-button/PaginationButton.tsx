@@ -1,5 +1,6 @@
 import { ButtonRounded } from '@/shared/ui';
 import { memo } from 'react';
+import * as S from './PaginationButton.styled';
 
 interface PaginationButtonProps {
   idx: number;
@@ -13,10 +14,9 @@ export const PaginationButton = memo(function PaginationButton({
   title,
 }: PaginationButtonProps) {
   return (
-    <ButtonRounded
-      isBordered
-      children={idx + 1}
-      hint={isActive ? title : undefined}
-    />
+    <S.StyledPaginationButton>
+      <ButtonRounded isBordered children={idx + 1} />
+      {isActive ? <S.StyledText>{title}</S.StyledText> : null}
+    </S.StyledPaginationButton>
   );
 });
