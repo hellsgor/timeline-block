@@ -3,6 +3,17 @@ import styled from 'styled-components';
 export const StyledWrapper = styled.div`
   position: relative;
   height: 390px;
+
+  & > span {
+    pointer-events: none;
+
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: 0;
+    left: 0;
+    translate: 0 -50%;
+  }
 `;
 
 export const StyledRound = styled.div`
