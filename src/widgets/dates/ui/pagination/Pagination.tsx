@@ -1,6 +1,8 @@
 import { memo } from 'react';
+import { Line } from '@/shared/ui';
 import type { ITimelineCategory } from '../../model';
 import { PaginationButton } from '../pagination-button';
+import * as S from './Pagination.styled';
 
 interface PaginationProps {
   categories: [string, ITimelineCategory][];
@@ -19,5 +21,11 @@ export const Pagination = memo(function Pagination({
       title={category[1].title}
     />
   ));
-  return <div>{buttons}</div>;
+  return (
+    <S.StyledWrapper>
+      <S.StyledRound />
+      <Line direction="horizontal" opacity={0.1} />
+      {buttons}
+    </S.StyledWrapper>
+  );
 });

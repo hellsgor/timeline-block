@@ -4,7 +4,6 @@ type TBaseRoundedButton = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: 'big' | 'medium' | 'small';
   isShadowed?: boolean;
   color?: string;
-  hint?: string;
 };
 
 // Прозрачная кнопка всегда с бордером
@@ -37,5 +36,4 @@ export type StyledButtonRoundedProps = Omit<
   $isBordered: ButtonRoundedProps['isBordered'];
   $isShadowed: ButtonRoundedProps['isShadowed'];
   $isTransparent: ButtonRoundedProps['isTransparent'];
-  $hint: ButtonRoundedProps['hint'];
 };

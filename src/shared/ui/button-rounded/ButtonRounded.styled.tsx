@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import type { StyledButtonRoundedProps } from './types';
-import { getRems } from '@/shared/lib';
 
 export const StyledButtonRounded = styled.button<StyledButtonRoundedProps>`
   --tr-func: ${({ theme }) => theme.transitions.func};
@@ -39,20 +38,6 @@ export const StyledButtonRounded = styled.button<StyledButtonRoundedProps>`
   ${(props) => props.$isShadowed && `filter: ${props.theme.colors.shadow};`}
 
   transition: color var(--tr-duration) var(--tr-func), border-color var(--tr-duration) var(--tr-func), opacity var(--tr-duration) var(--tr-func);
-
-  &::after {
-    pointer-events: none;
-    content: '${(props) => props.hint ?? ''}';
-
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 20px);
-    translate: 0 -50%;
-
-    font-size: ${getRems(20)};
-    font-weight: 700;
-    color: ${(props) => props.color || props.theme.colors.content.base};
-  }
 
   @media (hover: hover) {
     &:hover {
